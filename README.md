@@ -2,6 +2,8 @@
 
 **CODEWiz** is a fast, responsive VS Code and VSCodium extension that executes JavaScript files in a secure background runner, traces variable state changes in real-time, and displays the transitions directly inline as editor decorations.
 
+![CODEWiz Demo](docs/assets/CODEWiz_demo.gif)
+
 ---
 
 ## 🌟 Key Features
