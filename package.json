@@ -1,0 +1,128 @@
+{
+  "name": "codewiz",
+  "displayName": "CODEWiz",
+  "description": "Visualizes JavaScript variable state inline and in real-time.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codewiz.enableTracing",
+        "title": "Enable Tracing",
+        "icon": "$(play)"
+      },
+      {
+        "command": "codewiz.disableTracing",
+        "title": "Disable Tracing",
+        "icon": "$(debug-stop)"
+      }
+    ],
+    "configuration": {
+      "title": "CODEWiz",
+      "properties": {
+        "codewiz.runOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically run trace execution when a JavaScript file is saved."
+        },
+        "codewiz.runtime": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "bun",
+            "node"
+          ],
+          "default": "auto",
+          "description": "Select the runtime for background execution. 'auto' prefers bun if available, falling back to node."
+        },
+        "codewiz.timeout": {
+          "type": "integer",
+          "default": 2000,
+          "description": "Execution timeout in milliseconds for the background process runner (prevents infinite loops)."
+        },
+        "codewiz.maxTotalTraces": {
+          "type": "integer",
+          "default": 1000,
+          "description": "Maximum number of total trace entries collected in a single run (prevents Out of Memory)."
+        },
+        "codewiz.traceMode": {
+          "type": "string",
+          "enum": [
+            "all",
+            "comment",
+            "smart"
+          ],
+          "default": "smart",
+          "description": "Trace mode: 'all' traces all lines; 'comment' only traces lines ending with '//?'; 'smart' traces only '//?' lines if any are present, otherwise traces all lines."
+        },
+        "codewiz.maxLineTraces": {
+          "type": "integer",
+          "default": 20,
+          "description": "Maximum trace entries logged for a single statement/variable (prevents visual clutter)."
+        },
+        "codewiz.showRawInHover": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show a collapsible section with the raw trace JSON at the bottom of the hover cards."
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "codewiz.enableTracing",
+        "key": "ctrl+alt+t",
+        "mac": "cmd+alt+t",
+        "when": "editorTextFocus && editorLangId == javascript"
+      },
+      {
+        "command": "codewiz.disableTracing",
+        "key": "ctrl+alt+c",
+        "mac": "cmd+alt+c",
+        "when": "editorTextFocus && editorLangId == javascript"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "codewiz.enableTracing",
+          "group": "navigation",
+          "when": "resourceLangId == javascript && !codewiz.enabled"
+        },
+        {
+          "command": "codewiz.disableTracing",
+          "group": "navigation",
+          "when": "resourceLangId == javascript && codewiz.enabled"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --minify",
+    "watch-esbuild": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.34",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.17.19",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.21.8",
+    "@babel/traverse": "^7.21.5",
+    "@babel/generator": "^7.21.5",
+    "@types/babel__generator": "^7.6.4",
+    "@types/babel__traverse": "^7.18.5"
+  }
+}
