@@ -45,11 +45,17 @@
 
 ## 📥 Installation
 
-You can download and install the extension manually:
-1. Go to the [Releases](https://github.com/rayan-dev0/CODEWiz/releases) page.
-2. Download the latest `.vsix` file (e.g. `codewiz-x.y.z.vsix`).
-3. In VS Code, open the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
-4. Click the `...` (More Actions) button in the top right corner of the Extensions view, select **Install from VSIX...**, and choose the downloaded file.
+You can download the extension package and install it manually:
+
+<p align="center">
+  <a href="https://github.com/rayan-dev0/CODEWiz/releases">
+    <img src="https://img.shields.io/badge/Download-Latest_VSIX-7C3AED?style=for-the-badge&logo=github&logoColor=white" alt="Download VSIX" />
+  </a>
+</p>
+
+1. Download the latest `.vsix` file (e.g., `codewiz-x.y.z.vsix`) from the releases page above.
+2. In VS Code, open the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
+3. Click the `...` (More Actions) button in the top right corner of the Extensions view, select **Install from VSIX...**, and choose the downloaded file.
 
 ---
 
