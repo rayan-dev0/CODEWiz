@@ -3,6 +3,7 @@
   "displayName": "CODEWiz",
   "description": "Visualizes JavaScript variable state inline and in real-time.",
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.75.0"
   },

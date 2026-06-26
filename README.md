@@ -98,3 +98,9 @@ If you want to compile and modify the extension locally:
    ```
 4. Press **`F5`** (or go to the **Run and Debug** view and select **"Run Extension"**) to open a new Extension Development Host window.
 5. In the new window, open any JavaScript file and test the inline tracing.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
